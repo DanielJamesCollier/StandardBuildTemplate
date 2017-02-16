@@ -1,8 +1,11 @@
 clear
+source variables.sh
+
+echo -e "\n\n"
 echo "------------------------"
 echo "------Clean Started-----"
 echo "------------------------"
 echo "Deleting: Executable"
-rm main.dmg
+rm ./$exeName
 echo "------------------------"
 echo -e "\n\n"

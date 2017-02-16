@@ -1,7 +1,10 @@
+source variables.sh
+
+echo -e "\n\n"
 echo "------------------------"
 echo "-------Run Started------"
 echo "------------------------"
-./main
+./$exeName
 echo -e "\n"
 echo "------------------------"
 echo -e "\n\n"
