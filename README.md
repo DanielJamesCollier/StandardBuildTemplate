@@ -18,7 +18,10 @@ Then call the script that grants permissions to all other scripts
 ./setupAllScriptsRunnable.sh
 ```
 
-#####checking available compilers
+All the compiler folders come with a "variables.sh"
+edit the variables in this file to control the compile
+
+####Check the available compilers
 Calling the following should print out infomation on the compiler if it is installed
 otherwise it will report an error.
 ```sh
