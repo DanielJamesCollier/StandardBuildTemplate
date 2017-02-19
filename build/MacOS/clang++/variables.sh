@@ -1,7 +1,7 @@
 compilerFlags="-std=c++14 -stdlib=libc++ -Werror"
 files="../../../src/main.cpp"
 
-frameworkPath="dependencies/"
+frameworkPath="../dependencies/"
 frameworks=""
 
 includePath=""

@@ -1,10 +1,95 @@
 @echo off
-echo ------------------------
-echo ------Build Started-----
-echo ------------------------
+
+::initialise generic build variables
+call variables.bat
+
+:: initialise bo.bat specific build variables 
+SET bCompilerFlags=%compilerFlags%
+
 echo:
-echo cl /std:c++14 /WX /SUBSYSTEM:CONSOLE /Femain ../../src/main.cpp 
-cl /std:c++14 /WX /SUBSYSTEM:CONSOLE /Femain ../../src/main.cpp 
-echo ------------------------
+echo:
+echo ========================
+echo ======Build Started=====
+echo ========================
+echo:
+echo:
+echo =========inputs=========
+echo:
+:: compiler inputs
+echo -----------------------
+echo struct CompilerInputs {
+echo:
+
+echo    files[] = {
+(for %%a in (%files%) do ( 
+   echo         %%~na%%~xa  
+))
+echo    }
+echo:
+
+echo    includePaths[] = {
+(for %%a in (%incPaths%) do ( 
+   echo         %%a 
+))
+echo    }
+echo:
+
+echo    compilerFlags[] = {
+(for %%a in (%bCompilerFlags%) do ( 
+   echo         %%a 
+))
+echo    }
+echo:
+
+echo }
+echo:
+:: end compiler inputs
+
+:: linker inputs
+echo -----------------------
+echo struct LinkerInputs {
+echo:
+
+echo    libraryPaths[] = {
+(for %%a in (%libPaths%) do ( 
+   echo         %%a 
+))
+echo    }
+echo:
+
+echo    libraries[] = {
+(for %%a in (%libs%) do ( 
+   echo         %%a 
+))
+echo    }
+echo:
+    
+echo }
+echo:
+:: end of linker inputs
+echo =======================
+
+echo:
+echo =======compiler========
+cl /c %files% %bCompilerFlags% %includeFlags%
+echo =======================
+echo:
+
+echo ========linker=========
+echo:
+echo thingsToLink[] = {
+(for %%a in (%libs%) do ( 
+echo    %%a 
+))
+for %%i in (*.obj) do echo    %%i
+echo }
+echo:
+LINK *.obj %libraryFlags% /SUBSYSTEM:%system% /out:%exeName%
+echo ========================
+echo:
+echo:
+echo ========================
+echo =====Build Finished=====
+echo ========================
 echo:
 echo:
