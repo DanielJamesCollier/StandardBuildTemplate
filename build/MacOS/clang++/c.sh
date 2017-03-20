@@ -1,11 +1,15 @@
-clear
+#!/bin/bash
+
 source variables.sh
 
 echo -e "\n\n"
-echo "------------------------"
-echo "------Clean Started-----"
-echo "------------------------"
+echo "========================"
+echo "======Clean Started====="
+echo "========================"
 echo "Deleting: Executable"
 rm ./$exeName
-echo "------------------------"
-echo -e "\n\n"
+echo "Deleting: *.o"
+rm ./*.o
+echo "========================"
+echo "=====CLEAN FINISHED====="
+echo "========================"

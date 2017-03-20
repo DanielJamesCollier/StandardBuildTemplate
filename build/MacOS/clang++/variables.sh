@@ -1,30 +1,48 @@
-compilerFlags="-std=c++14 -stdlib=libc++ -Werror"
-files="../../../src/main.cpp"
+#!/bin/bash
 
+#--------------COMPILE VARIABLES--------------#
+
+    # file(s) to compile 
+    # default directory is ../../src/
+files="../../../src/main.cpp"
 frameworkPath="../dependencies/"
 frameworks=""
 
+    # include lookup directory('s)
 includePath=""
 
+    # compiler flag(s)
+compilerFlags="-std=c++14 -Wall"
+#----------------------------------------------#
+
+
+#----------------LINK VARIABLES----------------#
+    # paths to your frameworks
+frameworkPath="../dependencies/"
+
+    # framework names to link with
+frameworks=""
+
+    # name of the output executable
 exeName="main"
+#----------------------------------------------#
 
 
+#------------------DO NOT EDIT-----------------#
 includeFlags=""
-frameworksFlags=""
-if ["$frameworks" = ""]
+frameworkFlags=""
+
+if [[ -z "${includePath// }" ]]
 then
-    frameworksFlags=""
-    frameworks="no frameworks"
+    echo "include path empty"
 else
-    frameworksFlags="-L $frameworkPath -framework $frameworks"
+    includeFlags=-"I $includePath"
 fi
 
-if ["$includePath" = ""]
+if [[ -z "${frameworks// }" ]]
 then
-    includeFlags=""
-    includePath="no include path"
+     echo "frameworks empty"
 else
-    includeFlags="-I $includePath"
+    frameworkFlags="-L $frameworkPath -framework $frameworks"
 fi
-
-
+#----------------------------------------------#
